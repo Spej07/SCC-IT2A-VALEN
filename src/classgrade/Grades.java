@@ -5,48 +5,94 @@ import java.util.Scanner;
 
 class Grades {
 
-public void getGrade (){
-    Scanner input = new Scanner(System.in);
-    
-    String name;
-    int m, s, e, c, tm;
-    float totalAvg;
-    
-    
-    System.out.println("Enter your full name: ");
-    name = input.next();
-    
-    System.out.println("Enter Marks in: ");
-    System.out.println("Math: ");
-    m = input.nextInt();
-    System.out.println("Science: ");
-    s = input.nextInt();
-    System.out.println("English: ");
-    e = input.nextInt();
-    System.out.println("Computer: ");
-    c = input.nextInt();
-    
-    System.out.println("===========================================");
-    System.out.println("Grade Details");
-    System.out.println("===========================================");
-    
-    tm = m + s + e + c;
-    
-    totalAvg = tm/4;
-    
-    
-    System.out.println("Name : "+name);
-    System.out.println("Total Marks: "+tm);
-    System.out.println("Total Average: "+totalAvg);
-    
-    if(totalAvg >= 3.0){
-        System.out.println("You Passed!");
-    }else{
-        System.out.println("You Failed");
+public void editGrades(Grades[] grs, int sid, int size){
+    Scanner sc = new Scanner(System.in);
+  for(int i = 0; i < size; i++){
+      if(id == grs[i].id){
+          System.out.println("Enter NEW grades of student "+grs[i].id+":");
+            System.out.print("Prelim: ");
+               double npr = sc.nextDouble();
+            grs[i].p = npr;
+            System.out.println("Midterm: ");
+            double mid = sc.nextDouble();
+            grs [i].m = mid;
+            System.out.println("Prefinal : ");
+            double pf = sc.nextDouble();
+            grs [i].pf = pf;
+            System.out.println("Final : ");
+            double f = sc.nextDouble();
+            grs [i].f = f;
+
+      }
+  }
+
+}
+
+public void genGrade(){
+ Scanner sc = new Scanner(System.in);
+    Grades[] gr = new Grades[100];
+
+    int nums = 0;
+    int res;
+
+    do{
+    System.out.println("Grades Demo App");
+    System.out.println("-------------------------------------");
+    System.out.println("Actions:");
+    System.out.println("1. Add Records");
+    System.out.println("2. View Records");
+    System.out.println("3. Edit Records");
+    System.out.println("4. Delete Records");
+    System.out.println("5. Exit");
+    System.out.println("------------------------------------");
+
+    System.out.print("Select an Option: ");
+    int option = sc.nextInt();
+
+    while(option > 5){
+        System.out.print("Invalid Selection, Try Again: ");
+        option = sc.nextInt();
     }
-    
-    
-    
-    
-}    
+
+    switch(option){
+        case 1:
+            System.out.print("Enter no. of Students: ");
+            nums = sc.nextInt();
+
+            for(int i=0; i < nums; i++){
+                System.out.println("Enter details of student "+(i+1)+":");
+                System.out.print("ID: ");
+                int id = sc.nextInt();
+                System.out.print("Name: ");
+                String name = sc.next();
+                System.out.print("Prelim: ");
+                double pr = sc.nextDouble();
+                System.out.print("Midterm: ");
+                double md = sc.nextDouble();
+                System.out.print("Prefinal: ");
+                double pf = sc.nextDouble();
+                System.out.print("Final: ");
+                double fn = sc.nextDouble();
+                gr[i] = new Grades();
+                gr[i].addGrades(id, name, pr, md, pf, fn);
+            }
+        break;
+        case 2:
+             for(int i=0; i < nums; i++){
+                  gr[i].viewGrades();
+             }
+        break;
+        case 3:
+            System.out.println("Enter id to update: ");
+            int ids = sc.nextInt();
+            editGrades(gr, ids, nums);
+        break;
+    }
+
+    System.out.print("Do you want to continue ?  (1 / 0):  ");
+    res =  sc.nextInt();
+
+    }while(res != 0 );
+
+}
 }

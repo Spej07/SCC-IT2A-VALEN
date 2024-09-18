@@ -3,7 +3,6 @@ package classgrade;
 
 import java.util.Arrays;
 
-
 public class Accounts {
     
     
@@ -66,7 +65,7 @@ public class Accounts {
             return false;
         }
 
-        // Check for special characters
+        
         if (password.matches("[a-zA-Z0-9]+")) {
             System.out.println("Password must contain at least one special character.");
             return false;
