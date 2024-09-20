@@ -1,10 +1,11 @@
 
 package classgrade;
 
-import java.util.Scanner;
 public class Account {
-    Scanner s = new Scanner(System.in);
-  
+    
+    private static int lastId = 0;
+
+   
     private int id;
     private String firstName;
     private String lastName;
@@ -12,9 +13,9 @@ public class Account {
     private String username;
     private String password;
 
-    
-    public Accounts(int id, String firstName, String lastName, String email, String username, String password) {
-        this.id = id;
+ 
+    public Account(String firstName, String lastName, String email, String username, String password) {
+        this.id = ++lastId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,9 +23,17 @@ public class Account {
         this.password = password;
     }
 
-    
+    // Getter methods
     public int getId() {
         return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
@@ -35,14 +44,14 @@ public class Account {
         return username;
     }
 
-    
-    public boolean passwordVerify(String password) {
-        
-        return password.length() >= 6; 
+    public String getPassword() {
+        return password;
     }
 
-    public void viewAccount() {
-        System.out.printf("%-10d %-10s %-10s %-20s %-13s %-10s\n", id, firstName, lastName, email, username, password);
-   }
- }
-
+    
+  
+    public String toString() {
+        return "ID: " + id + " | First Name: " + firstName + " | Last Name: " + lastName + 
+               " | Email: " + email + " | Username: " + username;
+    }
+}

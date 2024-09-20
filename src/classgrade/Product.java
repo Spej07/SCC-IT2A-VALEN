@@ -1,33 +1,55 @@
 
 package classgrade;
 
-
+import java.util.Scanner;
 public class Product {
     
-   
-    
-    int pid, stocks;
-    String pname;
-    double price;
-    int st;
-    int pr;
-    
-    
-    public void addProduct(int id, String name, double price, double stocks, double TEP){
-      this.pid = id;
-      this.pname = name;
-      this.stocks = st;
-      this.price = pr;
-        
-    }
-    
-    public void viewProduct(){
-       
-        double tep = this.price * this.stocks;
-        String status = (this.stocks < 1 )? "Available" : "Out of stocks";
+     public static void main(String[] args) {
+        products[] pr = new products[100];  
 
-        System.out.printf("%-10d %-10s %-10d %-10.2f %-10.2f %-10s\n",
-        this.pid, this.pname, this.stocks, this.price, tep, status);
-        
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the number of products: ");
+        int nump = sc.nextInt();
+
+     
+        for (int i = 0; i < nump; i++) {
+            System.out.println("Enter details of product " + (i + 1) + ":");
+
+            System.out.print("ID: ");
+            int id = sc.nextInt();
+
+            System.out.print("Name: ");
+            String name = sc.next();
+
+            System.out.print("Price: ");
+            double pri = sc.nextDouble();
+
+            System.out.print("Stock: ");
+            int st = sc.nextInt();
+
+            System.out.print("Sold: ");
+            int sold = sc.nextInt();
+
+            product prod = new products(); 
+            prod.addProduct(id, name, st, pri, sold);
+
+            pr[i] = prod;  
+        }
+
+    
+        System.out.println("----------------------");
+        System.out.println("\nProduct Details:\n");
+        System.out.println("----------------------");
+
+        System.out.printf("%-10s %-20s %-10s %-20s %-20s %-20s %-20s %-20s\n",
+                          "ID", "Name", "Stocks", "Price", "Items Sold", "Total Expected Profit", "Total Profit", "Status");
+
+        for (int i = 0; i < nump; i++) {
+            pr[i].viewProduct();
+        }
+
+        sc.close();
+     }
 }
-}
+    
