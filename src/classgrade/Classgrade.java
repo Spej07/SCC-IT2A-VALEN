@@ -7,11 +7,8 @@ import java.util.Scanner;
 
 public class Classgrade {
 
-  
+
     public static void main(String[] args) {
-        
-        
-   
           //PRODUCT//
          
       /* products[] pr = new products[100];
@@ -70,11 +67,11 @@ public class Classgrade {
                  grd.getGrade();*/
      
      
-      Scanner scanner = new Scanner(System.in);
+      Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter number of accounts to register: ");
-        int numberOfAccounts = scanner.nextInt();
-        scanner.nextLine();
+        int numberOfAccounts = sc.nextInt();
+        sc.nextLine();
 
         Accounts accounts = new Accounts(numberOfAccounts);
 
@@ -82,21 +79,21 @@ public class Classgrade {
             System.out.println("Enter details for account " + (i + 1) + ":");
        
             System.out.print("First Name: ");
-            String firstName = scanner.nextLine();
+            String firstName = sc.nextLine();
 
             System.out.print("Last Name: ");
-            String lastName = scanner.nextLine();
+            String lastName = sc.nextLine();
 
             System.out.print("Email: ");
-            String email = scanner.nextLine();
+            String email = sc.nextLine();
 
             System.out.print("Username: ");
-            String username = scanner.nextLine();
+            String username = sc.nextLine();
 
             String password;
             do {
                 System.out.print("Password: ");
-                password = scanner.nextLine();
+                password = sc.nextLine();
                 if (!accounts.isPasswordValid(password)) {
                     System.out.println("Invalid password. Please try again.");
                 }
@@ -113,7 +110,7 @@ public class Classgrade {
         System.out.println("\nAll registered accounts:");
         accounts.viewAccounts(); 
 
-        scanner.close();
+        sc.close();
     }
 }
 
